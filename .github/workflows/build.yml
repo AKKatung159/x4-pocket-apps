@@ -1,0 +1,24 @@
+name: build
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ziglang==0.17.0
+      - run: scripts/build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xpa
+          path: dist/*.xpa
+      - if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.xpa --title "$GITHUB_REF_NAME" --generate-notes
