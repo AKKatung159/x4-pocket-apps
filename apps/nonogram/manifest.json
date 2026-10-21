@@ -1,0 +1,9 @@
+{
+  "sdk": 2,
+  "id": "nonogram",
+  "version": "1.0.0",
+  "entry": "app.wasm",
+  "name": { "en": "Nonogram", "th": "โนโนแกรม" },
+  "memory": 16,
+  "save": 236
+}
