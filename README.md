@@ -7,7 +7,8 @@
 |---|---|
 | 2048 | ✅ |
 | Minesweeper (เกมกู้ระเบิด) | ✅ |
-| Nonogram, Flashcards, Tarot, Reading stats, Dashboard | กำลังย้ายจากเฟิร์มแวร์ |
+| Tarot (ไพ่ทาโรต์) | ✅ รูปไพ่สร้างเองด้วย `scripts/make_tarot_cards.py <โฟลเดอร์สแกน>` ก่อน build |
+| Nonogram, Flashcards, Reading stats, Dashboard | กำลังย้ายจากเฟิร์มแวร์ |
 
 ## ทำแอปเอง
 

@@ -1,0 +1,9 @@
+{
+  "sdk": 1,
+  "id": "tarot",
+  "version": "1.0.0",
+  "entry": "app.wasm",
+  "name": { "en": "Tarot", "th": "ไพ่ทาโรต์" },
+  "memory": 16,
+  "save": 0
+}
