@@ -1,0 +1,9 @@
+{
+  "sdk": 1,
+  "id": "minesweeper",
+  "version": "1.0.0",
+  "entry": "app.wasm",
+  "name": { "en": "Minesweeper", "th": "เกมกู้ระเบิด" },
+  "memory": 16,
+  "save": 84
+}

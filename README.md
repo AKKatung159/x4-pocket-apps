@@ -6,7 +6,8 @@
 | แอป | สถานะ |
 |---|---|
 | 2048 | ✅ |
-| Minesweeper, Nonogram, Flashcards, Tarot, Reading stats, Dashboard | กำลังย้ายจากเฟิร์มแวร์ |
+| Minesweeper (เกมกู้ระเบิด) | ✅ |
+| Nonogram, Flashcards, Tarot, Reading stats, Dashboard | กำลังย้ายจากเฟิร์มแวร์ |
 
 ## ทำแอปเอง
 
