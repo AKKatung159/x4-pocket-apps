@@ -1,0 +1,8 @@
+{
+  "sdk": 2,
+  "id": "stats",
+  "version": "1.0.0",
+  "entry": "app.wasm",
+  "name": { "en": "Reading stats", "th": "สถิติการอ่าน" },
+  "memory": 16
+}

@@ -1,0 +1,9 @@
+{
+  "sdk": 2,
+  "id": "flashcards",
+  "version": "1.0.0",
+  "entry": "app.wasm",
+  "name": { "en": "Flashcards", "th": "แฟลชการ์ด" },
+  "memory": 32,
+  "save": 68
+}

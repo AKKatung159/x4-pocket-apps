@@ -30,35 +30,9 @@ static const char* cols[COLUMNS];
 
 static int th(void) { return x4_lang() == 1; }
 
-// One pass over the deck in 512-byte chunks. A card row has a TAB and does not
-// start with '#' after an optional UTF-8 BOM, like the firmware's TSV reader.
 static void indexDeck(void) {
-  static uint8_t chunk[512];
-  char head[4];
-  int len = 0, tab = 0;
-  uint32_t offset = 0, start = 0;
-  rows = 0;
-  for (;;) {
-    const int got = x4_read(DECK, (int)offset, chunk, sizeof(chunk));
-    if (got < 0) return;
-    const int eof = got == 0;  // a last line without '\n' still ends here
-    for (int i = 0; i < (eof ? 1 : got); ++i) {
-      const char c = eof ? '\n' : (char)chunk[i];
-      if (c != '\n') {
-        if (len < (int)sizeof(head)) head[len] = c;
-        tab |= c == '\t';
-        ++len;
-        continue;
-      }
-      const int skip = len >= 3 && memcmp(head, "\xEF\xBB\xBF", 3) == 0 ? 3 : 0;
-      if (tab && len > skip && head[skip] != '#' && rows < MAX_ROWS) rowAt[rows++] = start;
-      start = offset + (uint32_t)i + 1;
-      len = 0;
-      tab = 0;
-    }
-    if (eof) return;
-    offset += (uint32_t)got;
-  }
+  rows = x4_rows(DECK, rowAt, MAX_ROWS);
+  if (rows < 0) rows = 0;
 }
 
 // Reads card `index` and splits it at TABs; missing columns are "".

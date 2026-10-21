@@ -13,6 +13,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install ziglang==0.17.0
+      - run: tests/run.sh
       - run: scripts/build.sh
       - uses: actions/upload-artifact@v4
         with:

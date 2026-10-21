@@ -1,5 +1,5 @@
 {
-  "sdk": 1,
+  "sdk": 2,
   "id": "tarot",
   "version": "1.0.0",
   "entry": "app.wasm",

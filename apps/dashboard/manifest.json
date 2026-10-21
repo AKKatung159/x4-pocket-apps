@@ -1,0 +1,8 @@
+{
+  "sdk": 2,
+  "id": "dashboard",
+  "version": "1.0.0",
+  "entry": "app.wasm",
+  "name": { "en": "Dashboard", "th": "แดชบอร์ด" },
+  "memory": 16
+}
