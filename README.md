@@ -4,6 +4,20 @@
 แต่ละแอปเป็นไฟล์ `.xpa` (zip) — แตกไฟล์ที่ `/apps/` บน SD แล้วเปิดจาก Home → แอป
 แอปที่ id ตรงกับแอปในเฟิร์มแวร์จะแสดงแทนตัวในเฟิร์มแวร์
 
+<p align="center">
+  <img src="docs/showcase/apps-hub.png" alt="หน้าแอปบน X4" width="23%">
+  <img src="docs/showcase/apps-tarot-reversed.png" alt="ไพ่ทาโรต์ หกดาบ กลับหัว" width="23%">
+  <img src="docs/showcase/apps-minesweeper.png" alt="เกมกู้ระเบิด" width="23%">
+  <img src="docs/showcase/apps-flashcards.png" alt="แฟลชการ์ด" width="23%">
+</p>
+<p align="center">
+  <img src="docs/showcase/apps-2048.png" alt="2048" width="23%">
+  <img src="docs/showcase/apps-nonogram.png" alt="โนโนแกรม" width="23%">
+  <img src="docs/showcase/apps-tarot.png" alt="ไพ่ทาโรต์ สองถ้วย" width="23%">
+</p>
+
+<sub>ภาพหน้าจอจาก X4 เครื่องจริง</sub>
+
 | แอป | SDK | ปุ่ม |
 |---|---|---|
 | 2048 | v1 | ลูกศรทั้งสี่ทิศ · Confirm เกมใหม่เมื่อเดินไม่ได้ |
