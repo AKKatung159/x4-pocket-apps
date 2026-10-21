@@ -23,11 +23,14 @@ mkdir -p sdroot/apps/tarot/cards
 python3 - <<'EOF'
 import json
 from PIL import Image, ImageDraw
-# Placeholder tarot cards: a frame and the card's file name.
+# Placeholder tarot cards (a frame and the file name) only where the pack has no picture.
+import os
 for line in open("sdroot/apps/tarot/deck.tsv", encoding="utf-8"):
     if not line.strip() or line.startswith("#"):
         continue
     name = line.split("\t", 1)[0]
+    if os.path.exists(f"sdroot/apps/tarot/cards/{name}.bmp"):
+        continue
     img = Image.new("1", (300, 520), 1)
     d = ImageDraw.Draw(img)
     d.rectangle((4, 4, 295, 515), outline=0, width=6)
@@ -112,7 +115,7 @@ EOF
 # The SDK apps replace the built-ins with the same ids.
 open_hub="press:down wait:2 press:down wait:2 press:confirm wait:6"
 downs() { for _ in $(seq "$1"); do printf 'press:down wait:2 '; done; }
-open_app() { echo "$open_hub $(downs "$1")press:confirm wait:8"; }
+open_app() { echo "$open_hub shot:hub.png $(downs "$1")press:confirm wait:8"; }
 back="press:back wait:6"
 
 # 2048: four moves, Back saves, reopen.

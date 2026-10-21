@@ -21,8 +21,10 @@
 - **แฟลชการ์ด:** ไฟล์ `.tsv` ใน `/apps/flashcards/` ไฟล์ละชุด บรรทัดละใบ `หน้า<TAB>หลัง` (`\n` = ขึ้นบรรทัดใหม่)
   ชื่อไฟล์ใช้ได้แค่ `A-Z a-z 0-9 . _ -` ชุดละไม่เกิน 2,000 ใบ
 - **โนโนแกรม:** `/apps/nonogram/puzzles.tsv` บรรทัดละโจทย์ `ชื่อ<TAB>แถว/แถว/...` `#` = ช่องที่ระบาย ไม่เกิน 15×15
-- **ไพ่ทาโรต์:** `deck.tsv` มากับแพ็ก รูปไพ่สร้างเองด้วย `scripts/make_tarot_cards.py <โฟลเดอร์สแกน>` ก่อน build
-  (ภาพสแกน Rider-Waite-Smith 1909 จาก Wikimedia Commons, public domain)
+- **ไพ่ทาโรต์:** `deck.tsv` และรูปไพ่ 78 ใบมากับแพ็ก (ภาพสแกน Rider-Waite-Smith 1909 จาก
+  Wikimedia Commons, public domain แปลงด้วย `scripts/make_tarot_cards.py <โฟลเดอร์สแกน>`)
+
+ไอคอนของแต่ละแอปคือ `apps/<id>/icon.bmp` (32×32, 1 บิต) สร้างด้วย `scripts/make_icons.py`
 
 ## ทำแอปเอง
 
@@ -48,6 +50,9 @@ Apps for the Xteink X4 running the crosspoint-x4 firmware (Pocket SDK). Each app
 built-in one replaces it in the list. 2048 and Minesweeper use SDK v1; Nonogram, Tarot, Flashcards, Reading stats and
 Dashboard need SDK v2 (TSV row index, directory listing, reading stats, the dashboard image and Wi-Fi sync).
 Back always leaves an app; holding Confirm returns to an app's own list where it has one.
+Each app's hub icon is `apps/<id>/icon.bmp` (32x32, 1-bit, from `scripts/make_icons.py`). The tarot pack
+ships the 78 Rider-Waite-Smith 1909 scans from Wikimedia Commons (public domain), converted by
+`scripts/make_tarot_cards.py`.
 
 To build: `pip install ziglang` (or install zig), then `scripts/build.sh [apps/<id>]` writes `dist/<id>.xpa`.
 An app is `apps/<id>/` with `manifest.json`, C sources and any data files; the API is [sdk/x4.h](sdk/x4.h).
