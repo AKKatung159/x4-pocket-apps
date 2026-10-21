@@ -147,7 +147,8 @@ static void renderImage(int top, int bottom) {
       if (bh < 0) bh = -bh;
       int dw = bw;
       if (bw > boxW || bh > boxH) dw = bw * boxH / bh < boxW ? bw * boxH / bh : boxW;
-      if (bw > 0 && bh > 0) shown = x4_image(path, (w - dw) / 2, top, boxW, boxH);
+      // A reversed card is drawn upside down, as it lies on the table.
+      if (bw > 0 && bh > 0) shown = x4_image2(path, (w - dw) / 2, top, boxW, boxH, reversed[current] ? X4_ROTATE180 : 0);
     }
   }
   if (!shown) {

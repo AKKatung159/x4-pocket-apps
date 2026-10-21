@@ -12,7 +12,7 @@ int stub_save_len = -1, stub_saves = 0;
 x4_stats_t stub_stats;
 int stub_have_stats = 0, stub_have_dashboard = 0, stub_sync_ok = 0, stub_syncs = 0;
 char stub_title[64], stub_hint[64];
-int stub_images = 0, stub_image_x = -1, stub_refresh = 0;
+int stub_images = 0, stub_image_x = -1, stub_image_flags = -1, stub_refresh = 0;
 int stub_failures = 0;
 static int saveBytes = 0;  // the manifest's "save"
 
@@ -44,6 +44,7 @@ void stub_begin_render(void) {
   textCount = 0;
   stub_images = 0;
   stub_image_x = -1;
+  stub_image_flags = -1;
   stub_refresh = X4_FAST;
   stub_title[0] = stub_hint[0] = 0;
 }
@@ -102,6 +103,11 @@ int x4_image(const char* path, int x, int y, int mw, int mh) {
   ++stub_images;
   stub_image_x = x;
   return 1;
+}
+int x4_image2(const char* path, int x, int y, int mw, int mh, int flags) {
+  const int drawn = x4_image(path, x, y, mw, mh);
+  if (drawn) stub_image_flags = flags;
+  return drawn;
 }
 void x4_refresh(int mode) { stub_refresh = mode; }
 int x4_textw(const char* s, int f, int fl) { return (int)strlen(s) * 10; }

@@ -73,9 +73,9 @@ X4_IMPORT(x4_fsize) int x4_fsize(const char* path);
 X4_IMPORT(x4_read) int x4_read(const char* path, int offset, void* out, int len);
 
 // Misc.
-X4_IMPORT(x4_rnd) uint32_t x4_rnd(void);       // hardware random
-X4_IMPORT(x4_millis) uint32_t x4_millis(void);  // since boot
-X4_IMPORT(x4_lang) int x4_lang(void);           // 0 English, 1 Thai
+X4_IMPORT(x4_rnd) uint32_t x4_rnd(void);          // hardware random
+X4_IMPORT(x4_millis) uint32_t x4_millis(void);    // since boot
+X4_IMPORT(x4_lang) int x4_lang(void);             // 0 English, 1 Thai
 X4_IMPORT(x4_log) void x4_log(const char* utf8);  // to the serial log
 
 // --- v2 ---------------------------------------------------------------------
@@ -91,6 +91,11 @@ X4_IMPORT(x4_list) int x4_list(int n, char* out, int cap);
 // firmware scans the file, so a long one costs the app no gas.
 X4_IMPORT(x4_rows) int x4_rows(const char* path, uint32_t* out, int max);
 
+// x4_image with flags: X4_ROTATE180 draws a 1-bit BMP upside down in the same
+// box (other BMPs are drawn upright). Only inside render(); 1 when drawn.
+enum { X4_ROTATE180 = 1 };
+X4_IMPORT(x4_image2) int x4_image2(const char* path, int x, int y, int max_w, int max_h, int flags);
+
 // Reading statistics, as the firmware records them.
 typedef struct {
   uint32_t total_sec, total_pages, sessions, finished;
@@ -99,7 +104,7 @@ typedef struct {
   struct {
     char key[12];  // "YYYY-MM-DD", "" if unknown
     uint32_t sec, pages;
-  } week[7];  // oldest first, week[6] is today
+  } week[7];             // oldest first, week[6] is today
   uint32_t last_sec;     // time in the most recent book
   int32_t last_percent;  // its progress, -1 if unknown
   char last_title[96];   // "" if none

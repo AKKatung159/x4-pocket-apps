@@ -77,7 +77,14 @@ int main(void) {
   loadCard(0);
   showMeaning = 0;
   RENDER();
+  reversed[0] = 0;
+  RENDER();
   CHECK(stub_images == 1 && stub_image_x == 90 && stub_drew("The Fool") && stub_refresh == X4_HALF);
+  CHECK(stub_image_flags == 0 && stub_drew("Upright"));
+  reversed[0] = 1;  // a reversed card is drawn upside down
+  RENDER();
+  CHECK(stub_image_flags == X4_ROTATE180 && stub_drew("Reversed"));
+  reversed[0] = 0;
   CHECK(strcmp(stub_title, "Card of the day") == 0 && strcmp(stub_hint, "Meaning") == 0);
   drawn[0] = 1;
   loadCard(1);

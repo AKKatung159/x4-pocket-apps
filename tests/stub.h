@@ -24,7 +24,7 @@ extern x4_stats_t stub_stats;
 extern int stub_have_stats, stub_have_dashboard, stub_sync_ok, stub_syncs;
 // What the last render did.
 extern char stub_title[64], stub_hint[64];
-extern int stub_images, stub_image_x, stub_refresh;
+extern int stub_images, stub_image_x, stub_image_flags, stub_refresh;
 void stub_begin_render(void);
 int stub_drew(const char* text);  // whether a text call in the last render had exactly this string
 

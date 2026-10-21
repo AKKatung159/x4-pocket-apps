@@ -111,11 +111,13 @@ sys.exit(worst > 1024)
 EOF
 }
 
-# Hub rows (x4_th_test): the built-in Counter, then SDK apps by English name.
-# The SDK apps replace the built-ins with the same ids.
+# Hub cells (x4_th_test), three to a row: the built-in Counter, then SDK apps by
+# English name. The SDK apps replace the built-ins with the same ids; Right
+# steps one cell.
 open_hub="press:down wait:2 press:down wait:2 press:confirm wait:6"
 downs() { for _ in $(seq "$1"); do printf 'press:down wait:2 '; done; }
-open_app() { echo "$open_hub shot:hub.png $(downs "$1")press:confirm wait:8"; }
+rights() { for _ in $(seq "$1"); do printf 'press:right wait:2 '; done; }
+open_app() { echo "$open_hub shot:hub.png $(rights "$1")press:confirm wait:8"; }
 back="press:back wait:6"
 
 # 2048: four moves, Back saves, reopen.
